@@ -31,6 +31,4 @@ public class ProductTest {
         int rsl = Shop.indexOfNull(products);
         assertThat(rsl, is(-1));
     }
-
-
 }
