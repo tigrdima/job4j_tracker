@@ -1,4 +1,4 @@
-package ru.job4j.inheritance;
+/**package ru.job4j.inheritance;
 
 public class Doctor extends Profession {
     private String department;
@@ -10,5 +10,5 @@ public class Doctor extends Profession {
 
     public String diagnosis(Pacient pacient) {
         }
-    }
+    }**/
 
