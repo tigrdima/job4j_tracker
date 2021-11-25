@@ -55,4 +55,14 @@ public class Tracker {
         }
         return rsl;
     }
+
+    public boolean delete(int id) {
+        int index = indexOf(id);
+        for (int i = 0; i < items.length; i++) {
+            System.arraycopy(items, index + 1, items, index, size - index - 1);
+        }
+        items[size - 1] = null;
+        size--;
+        return true;
+    }
 }
