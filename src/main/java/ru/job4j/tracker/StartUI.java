@@ -11,6 +11,7 @@ public class StartUI {
         String currentDateTimeFormat = currentDateTime.format(formatter);
         System.out.println(currentDateTimeFormat);
 
+        Item item = new Item(1, "First");
+        System.out.println(item.toString());
     }
-
 }
