@@ -12,6 +12,6 @@ public class StartUI {
         System.out.println(currentDateTimeFormat);
 
         Item item = new Item(1, "First");
-        System.out.println(item.toString());
+        System.out.println(item);
     }
 }
