@@ -1,4 +1,4 @@
-/**package ru.job4j.inheritance;
+package ru.job4j.inheritance;
 
 public class Builder extends Engineer {
      private String builderRank;
@@ -9,6 +9,7 @@ public class Builder extends Engineer {
     }
 
     public int calculateTheEstimate(Project project) {
+        return 0;
     }
 
-}**/
+}

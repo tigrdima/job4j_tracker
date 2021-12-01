@@ -1,4 +1,4 @@
-/**package ru.job4j.inheritance;
+package ru.job4j.inheritance;
 
 public class Programmer extends Engineer {
     private String experience;
@@ -9,7 +9,5 @@ public class Programmer extends Engineer {
     }
 
     public void programLanguage(Language language) {
-
     }
-
-}**/
+}

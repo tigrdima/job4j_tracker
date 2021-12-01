@@ -1,4 +1,4 @@
-/**package ru.job4j.inheritance;
+package ru.job4j.inheritance;
 
 public class Surgeon extends Doctor {
     private String qualification;
@@ -9,8 +9,8 @@ public class Surgeon extends Doctor {
     }
 
     public String tritment(Diagnosis diagnosis) {
-
+        return "amputation";
     }
-}**/
+}
 
 

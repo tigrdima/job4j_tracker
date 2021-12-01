@@ -1,4 +1,4 @@
-/**package ru.job4j.inheritance;
+package ru.job4j.inheritance;
 
 public class Dentist extends Doctor {
     private String qualification;
@@ -9,6 +9,6 @@ public class Dentist extends Doctor {
     }
 
     public boolean xRay(Diagnosis diagnosis) {
-
+        return true;
     }
-}**/
+}
