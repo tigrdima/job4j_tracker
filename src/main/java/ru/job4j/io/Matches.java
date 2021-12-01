@@ -14,12 +14,12 @@ public class Matches {
             System.out.println(player + " введите число от 1 до 3:");
             int matches = Integer.parseInt(input.nextLine());
 
-            if (matches > 3 || matches == 0) {
-                System.out.println("Вы ввели не верное число,  введите число от 1 до 3:");
+            if (matches > 3 || matches < 1) {
+                System.out.println("Вы ввели не верное число,  введите число от 1 до 3");
             } else {
                 turn = !turn;
                 count -= matches;
-                System.out.println("Осталось" + count);
+                System.out.println("Осталось " + count);
             }
         }
         if (!turn) {
