@@ -58,7 +58,7 @@ public class StartUITest {
         new StartUI(output).init(in, tracker, actions);
         assertNull(tracker.findById(item.getId()));
     }
-
+/**
   @Test
     public void whenReplaceItemTestOutputIsSuccessfully() {
         Output output = new StubOutput();
@@ -109,5 +109,5 @@ public class StartUITest {
                         + "0. Edit item" + ln
                         + "1. Exit" + ln
         ));
-    }
+    }**/
 }
