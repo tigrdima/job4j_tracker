@@ -16,7 +16,7 @@ public class StartUITest {
         );
         Tracker tracker = new Tracker();
         UserAction[] actions = {
-                new CreateAction(output),
+                 new CreateAction(output),
                 new Exit()
         };
         new StartUI(output).init(in, tracker, actions);
