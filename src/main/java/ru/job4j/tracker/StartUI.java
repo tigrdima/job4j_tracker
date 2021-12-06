@@ -34,7 +34,7 @@ public class StartUI {
                                 new DeleteItem(output),
                                 new FindItemById(output),
                                 new FindItemsByName(output),
-                                new Exit()
+                                new Exit(output)
         };
         new StartUI(output).init(input, tracker, actions);
     }
