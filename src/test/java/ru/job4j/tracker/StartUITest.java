@@ -8,7 +8,7 @@ import static org.junit.Assert.assertThat;
 
 public class StartUITest {
 
- /**   @Test
+    @Test
     public void whenCreateItem() {
         Output output = new StubOutput();
         Input in = new StubInput(
@@ -16,7 +16,7 @@ public class StartUITest {
         );
         Tracker tracker = new Tracker();
         UserAction[] actions = {
-                 new CreateAction(output),
+                new CreateAction(output),
                 new Exit(output)
         };
         new StartUI(output).init(in, tracker, actions);
@@ -59,7 +59,7 @@ public class StartUITest {
         assertNull(tracker.findById(item.getId()));
     }
 
-  @Test
+    @Test
     public void whenReplaceItemTestOutputIsSuccessfully() {
         Output output = new StubOutput();
         Tracker tracker = new Tracker();
@@ -164,5 +164,27 @@ public class StartUITest {
                         + "0. Find item by id" + ln
                         + "1. Exit" + ln
         ));
-    }**/
+    }
+
+    @Test
+    public void whenInvalidExit() {
+        Output out = new StubOutput();
+        Input in = new StubInput(
+                new String[]{"7", "0"}
+        );
+        Tracker tracker = new Tracker();
+        UserAction[] actions = new UserAction[]{
+                new Exit(out)
+        };
+        new StartUI(out).init(in, tracker, actions);
+        String ln = System.lineSeparator();
+        assertThat(out.toString(), is(
+                        "Menu" + ln
+                                + "0. Exit" + ln
+                                + "Wrong input, you can select:  0 .. 0" + ln
+                                + "Menu" + ln
+                                + "0. Exit" + ln
+                )
+        );
+    }
 }
