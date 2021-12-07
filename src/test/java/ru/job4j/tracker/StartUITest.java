@@ -58,7 +58,7 @@ public class StartUITest {
         new StartUI(output).init(in, tracker, actions);
         assertNull(tracker.findById(item.getId()));
     }
-/**
+
   @Test
     public void whenReplaceItemTestOutputIsSuccessfully() {
         Output output = new StubOutput();
@@ -106,8 +106,63 @@ public class StartUITest {
                         + "=== Show all items ===" + ln
                         + "Хранилище еще не содержит заявок" + ln
                         + "Menu" + ln
-                        + "0. Edit item" + ln
+                        + "0. Show all items" + ln
                         + "1. Exit" + ln
         ));
-    }**/
+    }
+
+    @Test
+    public void whenShowFindItemsByNameTestOutputIsSuccessfully() {
+        Output output = new StubOutput();
+        Tracker tracker = new Tracker();
+        tracker.add(new Item("test"));
+        String nameItem = "test1";
+        Input in = new StubInput(
+                new String[]{"0", nameItem, "1"}
+        );
+        UserAction[] actions = new UserAction[]{
+                new FindItemsByName(output),
+                new Exit(output)
+        };
+        new StartUI(output).init(in, tracker, actions);
+        String ln = System.lineSeparator();
+        assertThat(output.toString(), is(
+                "Menu" + ln
+                        + "0. Find items by name" + ln
+                        + "1. Exit" + ln
+                        + "=== Find items by name ===" + ln
+                        + "Заявки с именем: " + nameItem + " не найдены." + ln
+                        + "Menu" + ln
+                        + "0. Find items by name" + ln
+                        + "1. Exit" + ln
+        ));
+    }
+
+    @Test
+    public void whenShowFindItemByIdTestOutputIsSuccessfully() {
+        Output output = new StubOutput();
+        Tracker tracker = new Tracker();
+        Item item = new Item("test");
+        tracker.add(item);
+        String idItem = "2";
+        Input in = new StubInput(
+                new String[]{"0", idItem, "1"}
+        );
+        UserAction[] actions = new UserAction[]{
+                new FindItemById(output),
+                new Exit(output)
+        };
+        new StartUI(output).init(in, tracker, actions);
+        String ln = System.lineSeparator();
+        assertThat(output.toString(), is(
+                "Menu" + ln
+                        + "0. Find item by id" + ln
+                        + "1. Exit" + ln
+                        + "=== Find item by id ===" + ln
+                        + "Заявка с введенным id: " + idItem + " не найден" + ln
+                        + "Menu" + ln
+                        + "0. Find item by id" + ln
+                        + "1. Exit" + ln
+        ));
+    }
 }
