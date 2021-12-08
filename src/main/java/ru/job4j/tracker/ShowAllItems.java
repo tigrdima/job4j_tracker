@@ -22,6 +22,7 @@ public class ShowAllItems implements UserAction {
             for (Item item : all) {
                 output.printLn(item);
             }
+
         } else {
             output.printLn("Хранилище еще не содержит заявок");
         }

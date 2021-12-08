@@ -165,7 +165,7 @@ public class StartUITest {
                         + "Menu" + ln
                         + "0. Find item by id" + ln
                         + "1. Exit" + ln
-        ));
+         ));
     }
 
     @Test
