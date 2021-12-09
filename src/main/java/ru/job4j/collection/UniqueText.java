@@ -14,9 +14,8 @@ public class UniqueText {
                 if (check.contains(txt)) {
                     break;
                 }
+                rsl = false;
             }
-
-            rsl = false;
         }
         return rsl;
     }

@@ -17,7 +17,6 @@ public class UniqueTextTest {
     @Test
     public void isNotEquals() {
         String origin = "My cat eats a mouse";
-
         String text = "A mouse is eaten by a cat";
         assertThat(UniqueText.isEquals(origin, text), is(false));
     }
