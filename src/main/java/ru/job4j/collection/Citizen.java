@@ -9,6 +9,7 @@ public class Citizen {
     public Citizen(String passport, String username) {
         this.passport = passport;
         this.username = username;
+
     }
 
     public String getPassport() {
