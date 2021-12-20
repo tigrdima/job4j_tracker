@@ -39,7 +39,7 @@ public class TrackerTest {
         assertThat(result.getName(), is(first.getName()));
     }
 
-    /** @Test
+     @Test
     public void whenTestFindByNameCheckArrayLength() {
         Tracker tracker = new Tracker();
         Item first = new Item("First");
@@ -50,7 +50,7 @@ public class TrackerTest {
         tracker.add(new Item("Second"));
         tracker.add(new Item("First"));
         List<Item> result = tracker.findByName(first.getName());
-        assertThat(result.get(5).getName(), is(3));
+        assertThat(result.size(), is(3));
     }
 
     @Test
@@ -65,7 +65,7 @@ public class TrackerTest {
         tracker.add(new Item("First"));
         List<Item> result = tracker.findByName(second.getName());
         assertThat(result.get(1).getName(), is(second.getName()));
-    }**/
+    }
 
     @Test
     public void whenReplace() {
