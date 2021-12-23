@@ -23,7 +23,6 @@ public class FunctionalInterfaces {
        for (Integer i : map.keySet()) {
                 System.out.println("key: " + i + " value: " + map.get(i) + " " + biPred.test(i, map.get(i)));
             }
-
         Supplier<List<String>> sup = () -> new ArrayList<>(map.values());
         Consumer<String> con = s -> System.out.println(s);
         Function<String, String> func = s -> s.toUpperCase();
