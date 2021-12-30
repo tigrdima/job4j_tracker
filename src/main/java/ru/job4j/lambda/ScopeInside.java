@@ -9,6 +9,7 @@ public class ScopeInside {
 
         for (int i = 0; i < number.length; i++) {
             int num = number[i];
+
             total += add(
                     () -> num
             );
