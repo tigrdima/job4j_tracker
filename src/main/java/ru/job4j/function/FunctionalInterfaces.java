@@ -21,7 +21,9 @@ public class FunctionalInterfaces {
        BiPredicate<Integer, String> biPred = (i, s) -> i % 2 == 0 || s.length() == 4;
 
        for (Integer i : map.keySet()) {
-                System.out.println("key: " + i + " value: " + map.get(i) + " " + biPred.test(i, map.get(i)));
+                if (biPred.test(i, map.get(i))) {
+                    System.out.println("key: " + i + " value: " + map.get(i));
+                }
             }
         Supplier<List<String>> sup = () -> new ArrayList<>(map.values());
         Consumer<String> con = s -> System.out.println(s);
