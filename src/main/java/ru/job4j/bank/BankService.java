@@ -48,12 +48,12 @@ public class BankService {
      * @return - возращает пользователя по номеру паспорта, если  он есть в системе
      */
     public User findByPassport(String passport) {
-        for (User user : users.keySet()) {
-            if (user.getPassport().equals(passport)) {
-                return user;
-            }
-        }
-        return null;
+
+       return users.keySet()
+                .stream()
+                .filter(user -> user.getPassport().equals(passport))
+                .findFirst()
+                .orElse(null);
     }
 
     /**
@@ -64,18 +64,18 @@ public class BankService {
      * @param requisite - реквизит счета, который метод получает на вход
      * @return - возращает счет , принадлежащий пользователю
      */
-    public Account findByRequisite(String passport, String requisite) {
-        User user = findByPassport(passport);
+   public Account findByRequisite(String passport, String requisite) {
+       User user = findByPassport(passport);
 
-        if (user != null) {
-            for (Account userAccount : users.get(user)) {
-                if (userAccount.getRequisite().equals(requisite)) {
-                    return userAccount;
-                }
-            }
-        }
-        return null;
-    }
+       if (user != null) {
+           return users.get(user)
+                   .stream()
+                   .filter(userAccount -> userAccount.getRequisite().equals(requisite))
+                   .findFirst()
+                   .orElse(null);
+       }
+       return null;
+   }
 
     /**
      * Метод описывает перечисления средств с одного счета на другой
@@ -104,3 +104,4 @@ public class BankService {
         return rsl;
     }
 }
+
