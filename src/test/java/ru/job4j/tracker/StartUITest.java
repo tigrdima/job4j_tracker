@@ -189,4 +189,33 @@ public class StartUITest {
                 )
         );
     }
+
+    @Test
+    public void whenShowFindItemsByNameTestOutputIsSuccessfully2() {
+        Output output = new StubOutput();
+        Tracker tracker = new Tracker();
+        Item test = new Item("test");
+        tracker.add(test);
+        String nameItem = "test";
+        Input in = new StubInput(
+                new String[]{"0", nameItem, "1"}
+        );
+        List<UserAction> actions = List.of(
+                new FindItemsByName(output),
+                new Exit(output)
+        );
+        new StartUI(output).init(in, tracker, actions);
+        String ln = System.lineSeparator();
+        assertThat(output.toString(), is(
+                "Menu" + ln
+                        + "0. Find items by name" + ln
+                        + "1. Exit" + ln
+                        + "=== Find items by name ===" + ln
+                        + test + ln
+                        + "Menu" + ln
+                        + "0. Find items by name" + ln
+                        + "1. Exit" + ln
+        ));
+    }
+
 }
