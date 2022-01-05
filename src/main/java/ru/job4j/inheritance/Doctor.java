@@ -9,6 +9,7 @@ public class Doctor extends Profession {
     }
 
     public String diagnosis(Pacient pacient) {
+
         return "ORVI";
         }
     }

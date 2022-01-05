@@ -9,6 +9,7 @@ public class Surgeon extends Doctor {
     }
 
     public String tritment(Diagnosis diagnosis) {
+
         return "amputation";
     }
 }

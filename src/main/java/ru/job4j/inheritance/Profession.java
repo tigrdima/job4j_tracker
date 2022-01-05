@@ -13,6 +13,7 @@ public class Profession {
     }
 
     public String getName() {
+
         return name;
     }
 }

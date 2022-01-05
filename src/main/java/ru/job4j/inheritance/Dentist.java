@@ -9,6 +9,7 @@ public class Dentist extends Doctor {
     }
 
     public boolean xRay(Diagnosis diagnosis) {
+
         return true;
     }
 }
