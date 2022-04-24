@@ -1,4 +1,4 @@
-package ru.job4j.tracker;
+package ru.job4j.function.tracker;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public class ShowAllItems implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, SqlTracker tracker) {
         output.printLn("=== Show all items ===");
         List<Item> all = tracker.findAll();
         if (all.size() > 0) {

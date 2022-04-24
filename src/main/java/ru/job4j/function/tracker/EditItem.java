@@ -1,4 +1,4 @@
-package ru.job4j.tracker;
+package ru.job4j.function.tracker;
 
 public class EditItem implements UserAction {
     private final Output output;
@@ -13,10 +13,10 @@ public class EditItem implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, SqlTracker tracker) {
         output.printLn("=== Edit item ===");
-        int id = input.askInt("Enter Id");
-        String name = input.askStr("Enter name");
+        int id = input.askInt("Enter Id: ");
+        String name = input.askStr("Enter name: ");
         Item item = new Item(name);
         if (tracker.replace(id, item)) {
             output.printLn("Заявка изменена успешно.");

@@ -1,4 +1,4 @@
-package ru.job4j.tracker;
+package ru.job4j.function.tracker;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ public class StartUI {
         this.output = output;
     }
 
-    public void init(Input input, Tracker tracker, List<UserAction> actions) {
+    public void init(Input input, SqlTracker tracker, List<UserAction> actions) {
         boolean run = true;
 
         while (run) {
@@ -34,15 +34,20 @@ public class StartUI {
     public static void main(String[] args) {
         Output output = new ConsoleOutput();
         Input input = new ValidateInput(output, new ConsoleInput());
-        Tracker tracker = new Tracker();
-        List<UserAction> actions = List.of(new CreateAction(output),
-                                new ShowAllItems(output),
-                                new EditItem(output),
-                                new DeleteItem(output),
-                                new FindItemById(output),
-                                new FindItemsByName(output),
-                                new Exit(output)
-        );
-        new StartUI(output).init(input, tracker, actions);
+        try (SqlTracker tracker = new SqlTracker()) {
+            tracker.init();
+
+            List<UserAction> actions = List.of(new CreateAction(output),
+                    new ShowAllItems(output),
+                    new EditItem(output),
+                    new DeleteItem(output),
+                    new FindItemById(output),
+                    new FindItemsByName(output),
+                    new Exit(output)
+            );
+            new StartUI(output).init(input, tracker, actions);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
