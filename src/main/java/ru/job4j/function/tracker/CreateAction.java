@@ -13,7 +13,7 @@ public class CreateAction implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, SqlTracker tracker) {
+    public boolean execute(Input input, Store tracker) {
         output.printLn("=== Create a new Item ===");
         String name = input.askStr("Enter name");
         Item item = new Item(name);

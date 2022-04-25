@@ -13,7 +13,7 @@ public class EditItem implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, SqlTracker tracker) {
+    public boolean execute(Input input, Store tracker) {
         output.printLn("=== Edit item ===");
         int id = input.askInt("Enter Id: ");
         String name = input.askStr("Enter name: ");

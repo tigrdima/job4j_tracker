@@ -9,7 +9,7 @@ public class StartUI {
         this.output = output;
     }
 
-    public void init(Input input, SqlTracker tracker, List<UserAction> actions) {
+    public void init(Input input, Store tracker, List<UserAction> actions) {
         boolean run = true;
 
         while (run) {
