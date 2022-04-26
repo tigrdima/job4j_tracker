@@ -20,7 +20,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class SqlTrackerTest {
-    static Connection connection;
+    private static Connection connection;
 
     @BeforeClass
     public static void initConnection() {
@@ -55,6 +55,7 @@ public class SqlTrackerTest {
     public void whenAddItem() {
         SqlTracker tracker = new SqlTracker(connection);
         Item item = new Item("item");
+
         tracker.add(item);
         assertThat(tracker.findById(item.getId()), is(item));
     }
@@ -62,22 +63,19 @@ public class SqlTrackerTest {
     @Test
     public void whenReplaceItem() {
         SqlTracker tracker = new SqlTracker(connection);
-        Item item = new Item("item");
-        Item newItem = new Item("newItem");
-        tracker.add(item);
-        int id = item.getId();
-        tracker.replace(id, newItem);
-        assertThat(tracker.findById(id), is(newItem));
+        int id = tracker.add(new Item("item")).getId();
+
+        tracker.replace(id, new Item("newItem"));
+        assertThat(tracker.findById(id).getName(), is("newItem"));
     }
 
     @Test
     public void whenDeleteItem() {
         SqlTracker tracker = new SqlTracker(connection);
         Item item = new Item("item");
-        tracker.add(item);
-        int id = item.getId();
-        tracker.delete(id);
-        assertNull(tracker.findById(id));
+
+        tracker.delete(tracker.add(item).getId());
+        assertNull(tracker.findById(item.getId()));
     }
 
     @Test
@@ -92,29 +90,23 @@ public class SqlTrackerTest {
         tracker.add(new Item("item2"));
         tracker.add(new Item("item3"));
 
-        List<Item> rsl = tracker.findAll();
-
-        assertThat(rsl.size(), is(expected.size()));
-        assertTrue(expected.containsAll(rsl));
+        assertThat(tracker.findAll(), is(expected));
     }
 
     @Test
     public void whenFindByNameItem() {
         SqlTracker tracker = new SqlTracker(connection);
+
         List<Item> expected = List.of(
                 new Item("item3"),
                 new Item("item3")
         );
-        Item item = new Item("item");
         tracker.add(new Item("item3"));
-        tracker.add(item);
+        tracker.add(new Item("item"));
         tracker.add(new Item("item3"));
-
         List<Item> rsl = tracker.findByName("item3");
 
-        assertThat(expected.size(), is(rsl.size()));
-        assertTrue(expected.containsAll(rsl));
-        assertFalse(rsl.contains(item));
+        assertThat(rsl, is(expected));
     }
 
     @Test
