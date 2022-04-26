@@ -11,14 +11,14 @@ import static org.junit.Assert.assertThat;
 
 public class StartUITest {
 
-  /**  @Test
+  @Test
     public void whenCreateItem() {
         Output output = new StubOutput();
         Input in = new StubInput(
                 new String[]{"0", "Item name", "1"}
         );
-        SqlTracker tracker = new SqlTracker();
-        tracker.init();
+        MemTracker tracker = new MemTracker();
+        tracker.add(new Item("Item name"));
         List<UserAction> actions = List.of(
                 new CreateAction(output),
                 new Exit(output)
@@ -30,8 +30,7 @@ public class StartUITest {
     @Test
     public void whenEditItem() {
         Item item = new Item("test");
-        SqlTracker tracker = new SqlTracker();
-        tracker.init();
+        MemTracker tracker = new MemTracker();
         tracker.add(item);
         Output output = new StubOutput();
         Input in = new StubInput(
@@ -49,8 +48,7 @@ public class StartUITest {
     @Test
     public void whenDeleteItem() {
         Item item = new Item("test");
-        SqlTracker tracker = new SqlTracker();
-        tracker.init();
+        MemTracker tracker = new MemTracker();
         tracker.add(item);
         Output output = new StubOutput();
         Input in = new StubInput(
@@ -68,7 +66,7 @@ public class StartUITest {
     @Test
     public void whenReplaceItemTestOutputIsSuccessfully() {
         Output output = new StubOutput();
-        SqlTracker tracker = new SqlTracker();
+        MemTracker tracker = new MemTracker();
         Item one = tracker.add(new Item("test1"));
         String replaceName = "New Test Name";
         Input in = new StubInput(
@@ -95,7 +93,7 @@ public class StartUITest {
     @Test
     public void whenShowAllItemsTestOutputIsSuccessfully() {
         Output output = new StubOutput();
-        SqlTracker tracker = new SqlTracker();
+        MemTracker tracker = new MemTracker();
         Input in = new StubInput(
                 new String[]{"0", "1"}
         );
@@ -120,7 +118,7 @@ public class StartUITest {
     @Test
     public void whenShowFindItemsByNameTestOutputIsSuccessfully() {
         Output output = new StubOutput();
-        SqlTracker tracker = new SqlTracker();
+        MemTracker tracker = new MemTracker();
         tracker.add(new Item("test"));
         String nameItem = "test1";
         Input in = new StubInput(
@@ -147,7 +145,7 @@ public class StartUITest {
     @Test
     public void whenShowFindItemByIdTestOutputIsSuccessfully() {
         Output output = new StubOutput();
-        SqlTracker tracker = new SqlTracker();
+        MemTracker tracker = new MemTracker();
         Item item = new Item("test");
         tracker.add(item);
         String idItem = "2";
@@ -165,7 +163,7 @@ public class StartUITest {
                         + "0. Find item by id" + ln
                         + "1. Exit" + ln
                         + "=== Find item by id ===" + ln
-                        + "Заявка с введенным id: " + idItem + " не найден" + ln
+                        + "Заявка с введенным id: " + idItem + " не найдена" + ln
                         + "Menu" + ln
                         + "0. Find item by id" + ln
                         + "1. Exit" + ln
@@ -178,7 +176,7 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[]{"7", "0"}
         );
-        SqlTracker tracker = new SqlTracker();
+        MemTracker tracker = new MemTracker();
         List<UserAction> actions = List.of(
                 new Exit(out)
         );
@@ -197,7 +195,7 @@ public class StartUITest {
     @Test
     public void whenShowFindItemsByNameTestOutputIsSuccessfully2() {
         Output output = new StubOutput();
-        SqlTracker tracker = new SqlTracker();
+        MemTracker tracker = new MemTracker();
         Item test = new Item("test");
         tracker.add(test);
         String nameItem = "test";
@@ -221,5 +219,4 @@ public class StartUITest {
                         + "1. Exit" + ln
         ));
     }
-*/
 }

@@ -39,6 +39,7 @@ public class TrackerTest {
         tracker.add(second);
         Item result = tracker.findAll().get(0);
         assertThat(result.getName(), is(first.getName()));
+
     }
 
      @Test
