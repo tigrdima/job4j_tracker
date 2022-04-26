@@ -153,7 +153,7 @@
                             <finalName>tracker</finalName>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>ru.job4j.function.tracker.StartUI.java</mainClass>
+                                    <mainClass>ru.job4j.function.tracker.StartUI</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>
