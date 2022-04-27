@@ -81,32 +81,23 @@ public class SqlTrackerTest {
     @Test
     public void whenFindAllItem() {
         SqlTracker tracker = new SqlTracker(connection);
-        List<Item> expected = List.of(
-                new Item("item1"),
-                new Item("item2"),
-                new Item("item3")
-        );
-        tracker.add(new Item("item1"));
-        tracker.add(new Item("item2"));
-        tracker.add(new Item("item3"));
 
-        assertThat(tracker.findAll(), is(expected));
+        Item item1 = tracker.add(new Item("item1"));
+        Item item2 = tracker.add(new Item("item2"));
+        Item item3 = tracker.add(new Item("item3"));
+
+        assertThat(tracker.findAll(), is(List.of(item1, item2, item3)));
     }
 
     @Test
     public void whenFindByNameItem() {
         SqlTracker tracker = new SqlTracker(connection);
 
-        List<Item> expected = List.of(
-                new Item("item3"),
-                new Item("item3")
-        );
-        tracker.add(new Item("item3"));
-        tracker.add(new Item("item"));
-        tracker.add(new Item("item3"));
-        List<Item> rsl = tracker.findByName("item3");
+        Item item1 = tracker.add(new Item("item3"));
+        Item item2 = tracker.add(new Item("item"));
+        Item item3 = tracker.add(new Item("item3"));
 
-        assertThat(rsl, is(expected));
+        assertThat(tracker.findByName("item3"), is(List.of(item1, item3)));
     }
 
     @Test
