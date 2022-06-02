@@ -16,7 +16,6 @@ public class CreateActionTestGcAndDelSomeItems implements UserAction {
     @Override
     public boolean execute(Input input, Store tracker) {
         output.printLn("=== Create many Item and delete some Items (for test GC) ===");
-       // String name = input.askStr("Enter name");
        for (int i = 1; i < 100; i++) {
            Item item = new Item("name" + i);
            tracker.add(item);
