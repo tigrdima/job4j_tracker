@@ -169,4 +169,5 @@ public class TrackerTest {
         assertThat(out.toString(), is("=== Find items by name ===" + ln + bug + ln));
         assertThat(tracker.findAll().get(0), is(bug));
     }
+
 }
