@@ -77,4 +77,5 @@ public class HibernateRun {
         session.close();
         return result;
     }
+
 }
