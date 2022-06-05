@@ -34,18 +34,19 @@ public class StartUI {
     public static void main(String[] args) {
         Output output = new ConsoleOutput();
         Input input = new ValidateInput(output, new ConsoleInput());
-        MemTracker tracker = new MemTracker();
+        HbmTracker tracker = new HbmTracker();
 
-            List<UserAction> actions = List.of(new CreateAction(output),
-                    new ShowAllItems(output),
-                    new EditItem(output),
-                    new DeleteItem(output),
-                    new FindItemById(output),
-                    new FindItemsByName(output),
-                    new Exit(output),
-                    new CreateActionTestGcAndDelSomeItems(output)
-            );
-            new StartUI(output).init(input, tracker, actions);
+        List<UserAction> actions = List.of(new CreateAction(output),
+                new ShowAllItems(output),
+                new EditItem(output),
+                new DeleteItem(output),
+                new FindItemById(output),
+                new FindItemsByName(output),
+                new Exit(output),
+                new CreateActionTestGcAndDelSomeItems(output)
+        );
+
+        new StartUI(output).init(input, tracker, actions);
     }
 }
 
