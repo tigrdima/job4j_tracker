@@ -108,7 +108,8 @@ public class StartUITest {
                         + "0. Show all items" + ln
                         + "1. Exit" + ln
                         + "=== Show all items ===" + ln
-                        + "Хранилище еще не содержит заявок" + ln
+                      /**  + "Хранилище еще не содержит заявок" +
+                       */
                         + "Menu" + ln
                         + "0. Show all items" + ln
                         + "1. Exit" + ln

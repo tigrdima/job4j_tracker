@@ -101,11 +101,12 @@ public class SqlTracker implements Store, AutoCloseable {
             while (itemPr.next()) {
                items.add(rslItem(itemPr));
             }
-            for (Item i : items) {
-                observe.receive(i);
-            }
+
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+        for (Item i : items) {
+            observe.receive(i);
         }
     }
 
