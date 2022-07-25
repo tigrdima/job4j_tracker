@@ -16,14 +16,14 @@ public class ShowAllItems implements UserAction {
     public boolean execute(Input input, Store tracker) {
         output.printLn("=== Show all items ===");
         tracker.findAllByReact(output::printLn);
-//        if (all.size() > 0) {
-//            for (Item item : all) {
-//                output.printLn(item);
-//            }
-//
-//        } else {
-//            output.printLn("Хранилище еще не содержит заявок");
-//        }
+   /**     if (all.size() > 0) {
+            for (Item item : all) {
+                output.printLn(item);
+            }
+
+        } else {
+            output.printLn("Хранилище еще не содержит заявок");
+        }*/
         return true;
     }
 }
