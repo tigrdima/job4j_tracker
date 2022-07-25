@@ -45,4 +45,9 @@ public final class SingleTracker implements Store {
     public Item findById(int id) {
         return tracker.findById(id);
     }
+
+    @Override
+    public void findAllByReact(Observe<Item> observe) {
+
+    }
 }

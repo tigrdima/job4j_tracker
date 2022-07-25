@@ -105,6 +105,11 @@ public class HbmTracker implements Store, AutoCloseable {
     }
 
     @Override
+    public void findAllByReact(Observe<Item> observe) {
+
+    }
+
+    @Override
     public void close() throws Exception {
         StandardServiceRegistryBuilder.destroy(registry);
     }
